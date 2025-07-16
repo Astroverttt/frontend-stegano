@@ -1,7 +1,7 @@
 type SelectProps = React.SelectHTMLAttributes<HTMLSelectElement> & {
 	placeholder: string;
 	className?: string;
-	label: string;
+	label?: string;
 	id: string;
 	options: { value: string; label: string }[];
 	required?: boolean;

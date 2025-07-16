@@ -1,3 +1,7 @@
 export default function TestPage() {
-	return <div>test page</div>;
+	return (
+		<div>
+			<h1>Test</h1>
+		</div>
+	);
 }

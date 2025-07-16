@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import ProfileCard from "../../components/ProfileCard";
-import { DETAIL_PAGE } from "../../constant";
+import ProfileCard from "@/components/ProfileCard";
+import { DETAIL_PAGE } from "@/constant";
 
 export default function DetailArtworkPage() {
 	const data = DETAIL_PAGE;
