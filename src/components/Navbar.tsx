@@ -5,13 +5,13 @@ import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
 	return (
-		<nav className="w-full px-6 py-4 flex items-center justify-between border-b bg-white text-black">
+		<nav className="w-full sticky top-0 z-50 px-6 py-4 flex items-center justify-between border-b bg-white text-black">
 			<Link href="/" className="font-bold text-lg">
 				ArtPort
 			</Link>
 
 			<div className="flex space-x-4">
-				<Link href="#">Explore</Link>
+				<Link href="/explore">Explore</Link>
 				<div className="w-0.5 bg-gray-200" />
 				<Link href="#">Categories</Link>
 				<div className="w-0.5 bg-gray-200" />

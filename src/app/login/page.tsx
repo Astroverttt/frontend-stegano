@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -56,8 +57,11 @@ export default function LoginPage() {
 
 					<form onSubmit={handleLogin} className="space-y-5">
 						<div>
-							<label className="text-sm font-medium">Login</label>
+							<label htmlFor="email" className="text-sm font-medium">
+								Email
+							</label>
 							<input
+								id="email"
 								type="email"
 								placeholder="Email"
 								value={email}
@@ -68,8 +72,11 @@ export default function LoginPage() {
 						</div>
 
 						<div>
-							<label className="text-sm font-medium">Password</label>
+							<label htmlFor="password" className="text-sm font-medium">
+								Password
+							</label>
 							<input
+								id="password"
 								type="password"
 								placeholder="Enter password"
 								value={password}
@@ -80,13 +87,13 @@ export default function LoginPage() {
 						</div>
 
 						<div className="flex items-center justify-between text-sm">
-							<label className="flex items-center gap-2">
+							<label htmlFor="remember" className="flex items-center gap-2">
 								<input type="checkbox" className="accent-blue-600" />
 								Remember me
 							</label>
-							<a href="#" className="text-blue-500 hover:underline">
+							<Link href="#" className="text-blue-500 hover:underline">
 								Forgot password?
-							</a>
+							</Link>
 						</div>
 
 						{errorMsg && (
@@ -103,9 +110,9 @@ export default function LoginPage() {
 
 					<div className="text-center text-sm mt-6">
 						Don’t have an account?{" "}
-						<a href="/register" className="text-blue-500 hover:underline">
+						<Link href="/register" className="text-blue-500 hover:underline">
 							Sign up now
-						</a>
+						</Link>
 					</div>
 				</div>
 			</div>

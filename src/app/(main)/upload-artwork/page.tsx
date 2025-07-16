@@ -1,11 +1,28 @@
+"use client";
+import Image from "next/image";
+import { useCallback, useState } from "react";
+import { useDropzone } from "react-dropzone";
+import { MdOutlineFileUpload } from "react-icons/md";
 import Title from "@/components/Title";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
 
-export default function EditArtworkPage() {
+export default function UploadArtworkPage() {
+	const [files, setFiles] = useState<string[]>([]);
+	const onDrop = useCallback((acceptedFiles: File[]) => {
+		return setFiles(acceptedFiles.map((file) => URL.createObjectURL(file)));
+	}, []);
+
+	const dropZone = useDropzone({
+		onDrop,
+		accept: {
+			"image/*": ["image/jpeg", "image/png", "image/jpg"],
+		},
+	});
+
 	return (
-		<div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+		<div className="min-h-screen flex items-center justify-center bg-gray-50">
 			<div className="w-1/2 space-y-8">
 				<Title
 					title="Upload New Artwork"
@@ -26,7 +43,8 @@ export default function EditArtworkPage() {
 							id="sub-title"
 							label="Sub Title"
 							type="text"
-							placeholder="Veniam veniam consequat minim ullamco cupidatat aliquip."
+							placeholder="Add sub title to your artwork"
+							required={true}
 						/>
 
 						<Input
@@ -34,6 +52,14 @@ export default function EditArtworkPage() {
 							label="Description"
 							type="description"
 							placeholder="Lukisan ini merepresentasikan dinamika kehidupan urban melalui sapuan warna yang tegas dan bentuk geometris yang tidak beraturan. Setiap garis dan warna mencerminkan hiruk pikuk, ritme cepat, serta kesan modern dari sebuah kota yang terus bergerak."
+							required={true}
+						/>
+
+						<Input
+							id="watermark"
+							label="Watermark"
+							type="text"
+							placeholder="Add watermark to your artwork"
 							required={true}
 						/>
 
@@ -60,13 +86,32 @@ export default function EditArtworkPage() {
 							required={true}
 						/>
 
+						<div
+							{...dropZone.getRootProps()}
+							className="border-dashed border-2 border-gray-300 p-4 rounded-md flex flex-col items-center justify-center space-y-2"
+						>
+							<p>Drag and drop your image here or click to upload</p>
+							<MdOutlineFileUpload className="w-10 h-10 text-gray-400 rounded-full bg-gray-100 p-2" />
+							<Input {...dropZone.getInputProps()} />
+							{files.map((path) => (
+								<Image
+									key={path}
+									src={path}
+									width={900}
+									height={900}
+									alt="uploaded artowrk"
+								/>
+							))}
+						</div>
+
 						<div className="flex justify-between">
-							<Button type="button" variant="ghost" className="justify-center">
+							<Button type="button" variant="ghost">
 								Close
 							</Button>
-							<Button type="submit" className="justify-center">
-								Save Edit
+							<Button type="button" variant="ghost">
+								Save as Draft
 							</Button>
+							<Button type="button">Next</Button>
 						</div>
 					</div>
 				</form>
