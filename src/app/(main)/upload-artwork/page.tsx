@@ -56,16 +56,23 @@ export default function UploadArtworkPage() {
       formData.append("license", license);
 
       if (files[0]) {
-        formData.append("file", files[0]);
+        formData.append("image", files[0]);
       } else {
         alert("Image file missing.");
         return;
       }
 
-      const res = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_DEV_LINK}/api/artwork/uploads`,
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization:
+              `Bearer ${localStorage.getItem("access_token")}` || "",
+          },
+        }
+      );
 
       if (!res.ok) {
         const errorText = await res.text();
