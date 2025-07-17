@@ -18,7 +18,7 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/artworks")
+    fetch(`${process.env.NEXT_PUBLIC_DEV_LINK}/artworks`)
       .then((res) => res.json())
       .then((data) => {
         setArtworks(data);
