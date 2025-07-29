@@ -7,6 +7,9 @@ export const DETAIL_PAGE = {
 	tags: ["Animasi", "City", "View"],
 	description:
 		"Lukisan ini merepresentasikan dinamika kehidupan urban melalui sapuan warna yang tegas dan bentuk geometris yang tidak beraturan. Setiap garis dan warna mencerminkan hiruk pikuk, ritme cepat, serta kesan modern dari sebuah kota yang terus bergerak.",
+	extracted_in: "10 detik",
+	copyright_hash: "868be242da48da8898956a9d507b23e5",
+	creator_message: "Ini pesan rahasia jangan sampai bocor ketangan amerika",
 };
 
 export const EXPLORE_PAGE = [
